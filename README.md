@@ -1,3 +1,11 @@
+# SIMONDATA NOTICE
+
+We had to fork this package to fix a bug.  It is a transitive dependency of [react-ace](https://github.com/Radico/react-ace), which is used in our template editor.
+
+Our changes to this repo are in the `fix_django_syntax_highlighting_in_html_tags` branch.
+
+We serve this package from Artifactory.  Instructions for how to publish a new version to Artifactory are in [confluence](https://simondata.atlassian.net/wiki/spaces/eng/pages/408518703/Contributing+a+Package+in+Artifactory).
+
 # brace
 
 <a href="https://www.patreon.com/bePatron?u=8663953"><img alt="become a patron" src="https://c5.patreon.com/external/logo/become_a_patron_button.png" height="35px"></a>

@@ -2562,6 +2562,27 @@ var Mode = function() {
 oop.inherits(Mode, HtmlMode);
 
 (function() {
+
+    this.createWorker = function(session) {
+        if (this.constructor != Mode)
+            return;
+        var worker = new WorkerClient(["ace"], require("../worker/html"), "Worker");
+        worker.attachToDocument(session.getDocument());
+
+        if (this.fragmentContext)
+            worker.call("setOptions", [{context: this.fragmentContext}]);
+
+        worker.on("error", function(e) {
+            session.setAnnotations(e.data);
+        });
+
+        worker.on("terminate", function() {
+            session.clearAnnotations();
+        });
+
+        return worker;
+    };
+
     this.$id = "ace/mode/django";
 }).call(Mode.prototype);
 

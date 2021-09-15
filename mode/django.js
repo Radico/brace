@@ -2540,11 +2540,15 @@ var DjangoHtmlHighlightRules = function() {
             }, {
                 token: "constant.language",
                 regex: "\\%\\}",
-                next: "start"
+                next: function(currentState, stack) {
+                  return (stack && stack[0]) || "start"
+                }
             }, {
                 token: "constant.language",
                 regex: "\\}\\}",
-                next: "start"
+                next: function(currentState, stack) {
+                  return (stack && stack[0]) || "start"
+                }
         }]);
     }
 };
